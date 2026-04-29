@@ -63,13 +63,10 @@ server
 --advertise-address=${NODE_IP}
 --tls-san=${TAILSCALE_IP}
 --write-kubeconfig-mode=644
---disable=traefik
 "
 
 curl -sfL https://get.k3s.io | sh -
 ```
-
-***Note: We will use cloudflare tunnel ingress instead of the default Traefik**
 
 Copy kubeconfig to your laptop:
 
