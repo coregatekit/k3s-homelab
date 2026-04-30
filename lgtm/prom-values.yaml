@@ -1,0 +1,17 @@
+alertmanager:
+  enabled: false
+prometheus-pushgateway:
+  enabled: false
+prometheus-node-exporter:
+  enabled: false
+server:
+  retention: 5d # Retain metrics for 5 days, adjust as needed
+
+extraScrapeConfigs: |
+  - job_name: 'node-exporter'
+    kubernetes_sd_configs:
+      - role: endpoints
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name]
+        regex: prometheus-node-exporter
+        action: keep

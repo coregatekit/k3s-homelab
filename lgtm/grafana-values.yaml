@@ -1,0 +1,19 @@
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  hosts:
+    - grafana.coregate.dev
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.lgtm.svc.cluster.local
+        isDefault: true
+      - name: Loki
+        type: loki
+        url: http://loki.lgtm.svc.cluster.local:3100
+      - name: Tempo
+        type: tempo
+        url: http://tempo.lgtm.svc.cluster.local:3100
