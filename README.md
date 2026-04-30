@@ -15,3 +15,10 @@ VM (k3s control-plane)
      ↓
 Kubernetes API :6443
 ```
+
+We will allow only Tailscale IPs to access the VM. So we will access to cluster via Tailscale private network.
+
+## Installation
+
+1. Follow the instructions in the [K3S Setup](k3s-setup.md) to install K3S on your VM.
+2. Follow the instructions in the [Cloudflare Setup](ingress-setup.md) to set up Tailscale on your VM and laptop.
