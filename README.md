@@ -22,3 +22,6 @@ We will allow only Tailscale IPs to access the VM. So we will access to cluster 
 
 1. Follow the instructions in the [K3S Setup](k3s-setup.md) to install K3S on your VM.
 2. Follow the instructions in the [Cloudflare Setup](ingress-setup.md) to set up Tailscale on your VM and laptop.
+3. Follow the instructions in the [Monitoring Setup](monitoring-setup.md) to set up monitoring on your cluster.
+4. Follow the instructions in the [ArgoCD Setup](gitops-setup.md) to set up ArgoCD on your cluster.
+5. Follow the instructions in the [Vault Setup](vault-setup.md) to set up Vault on your cluster.
