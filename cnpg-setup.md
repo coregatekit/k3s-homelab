@@ -88,3 +88,39 @@ After that, you can use any tool like `DBeaver`, `pgAdmin` or `psql` to connect 
 - User: `app`
 - Password: (copy from the command above)
 - Database: `app`
+
+### Access from Outside the Cluster
+
+To access the database from your laptop (outside the Kubernetes cluster), you need an external IP address. We connect to this cluster by `Tailscale`'s ip address.
+
+So we can use `ServiceLB` for access through Tailscale ip address.
+
+Create file `cnpg-external-service.yaml`:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: <cluster-name>-lb
+  namespace: <namespace>
+spec:
+  type: LoadBalancer
+  selector:
+    cnpg.io/cluster: <cluster-name>
+    role: primary
+  ports:
+    - port: 5432
+      targetPort: 5432
+```
+
+Apply the config:
+
+```bash
+kubectl apply -f cnpg-external-service.yaml
+```
+
+```bash
+kubectl get svc -n <namespace>
+```
+
+Look for the `<cluster-name>-lb` service. The output will show an `EXTERNAL-IP`. In my case, it's show private network ip address. So we can access through the `Tailscale`'s ip address.

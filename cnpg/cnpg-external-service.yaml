@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homelab-pg-lb
+  namespace: database
+spec:
+  type: LoadBalancer
+  selector:
+    cnpg.io/cluster: homelab-pg
+    role: primary
+  ports:
+    - port: 5432
+      targetPort: 5432
