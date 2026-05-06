@@ -79,3 +79,17 @@ kubectl apply -f argocd-ingress.yaml
 ```
 
 Now you can access ArgoCD UI at `https://argocd.yourdomain.com` using the same credentials as before.
+
+## Generate GitHub Token
+
+We will use this token in step `Vault Setup` Part 3 to add GitHub repository to ArgoCD.
+
+1. Go to [GitHub Settings](https://github.com/settings/profile) > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token
+2. Set the token name to `argocd`
+3. Set the token to expire in 30 days (As you want)
+4. Repository access: Set to `Only select repositories` and choose your gitops repository
+5. Add permission `Metadata` with `Read-only` access to the repository
+6. Add permission `Contents` with `Read-only` access to the repository
+7. Generate the token and copy it to your clipboard
+
+***IMPORTANT:*** This token will show up only once. Don't lose this token. You will need it to add the GitHub repository to ArgoCD.
