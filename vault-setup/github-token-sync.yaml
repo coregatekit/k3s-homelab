@@ -1,0 +1,25 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: github-token-sync
+  namespace: argocd
+spec:
+  refreshInterval: "1h"
+  secretStoreRef:
+    name: vault-backend
+    kind: SecretStore
+  target:
+    name: github-repo-creds
+    template:
+      metadata:
+        labels:
+          argocd.argoproj.io/secret-type: repository
+      data:
+        url: "https://github.com/coregatekit/gitops.git"
+        password: "{{ .token }}"
+        username: "git"
+  data:
+    - secretKey: token
+      remoteRef:
+        key: argocd/gitops-repo
+        property: token
