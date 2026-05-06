@@ -25,3 +25,4 @@ We will allow only Tailscale IPs to access the VM. So we will access to cluster 
 3. Follow the instructions in the [Monitoring Setup](monitoring-setup.md) to set up monitoring on your cluster.
 4. Follow the instructions in the [ArgoCD Setup](gitops-setup.md) to set up ArgoCD on your cluster.
 5. Follow the instructions in the [Vault Setup](vault-setup.md) to set up Vault on your cluster.
+6. Follow the instructions in the [CNPG Setup](cnpg-setup.md) to set up CNPG on your cluster.
