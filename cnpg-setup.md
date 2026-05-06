@@ -124,3 +124,11 @@ kubectl get svc -n <namespace>
 ```
 
 Look for the `<cluster-name>-lb` service. The output will show an `EXTERNAL-IP`. In my case, it's show private network ip address. So we can access through the `Tailscale`'s ip address.
+
+## Monitoring
+
+We have already config `Prometheus` and `Grafana` in previous steps.
+
+Go to Grafana dashboard and import cnpg dashboard with id `20417` and choose `Prometheus` as datasource.
+
+After importing the dashboard, you can see PostgreSQL metrics in Grafana.
